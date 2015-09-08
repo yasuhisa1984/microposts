@@ -1,4 +1,7 @@
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
+<h1><%= gravatar_for @user %></h1>
+    <ul>
+        <li><%= @user.name %></li>
+        <li><%= @user.Profile %></li>
+        <li><%= @user.area %></li>
+    </ul>
+    <%= link_to "Edit", edit_user_path(current_user) %>
