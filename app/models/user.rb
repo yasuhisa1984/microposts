@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX },#format正規表現パターンに一致しているか
                       uniqueness: { case_sensitive: false} #ase_sensitive大文字と小文字を区別するか
     has_secure_password #認証機能を追加することができる
+    has_many :microposts
 end
