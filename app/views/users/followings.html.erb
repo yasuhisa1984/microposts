@@ -8,14 +8,7 @@
             <li>email:<%= followings.email %></li>
             <li>profile:<%= followings.Profile %></li>
          </ul>
-        
-        <div id="follow_form_<%= followings.id %>">
-           <% if current_user.following?(@user) %>
-             <%= render 'unfollow' %>
-           <% else %>
-             <%= render 'follow' %>
-           <% end %>
-        </div>
+        <%= render 'follow_form' %>
       </div>
  
    <% end %>
