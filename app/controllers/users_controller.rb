@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
 
   def new
-    @user = User.find(params[:id])
     @user = User.new
   end
   
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
   def edit
   end
   
- def update
+  def update
     if @user.update(user_params)
       # 保存に成功した場合はトップページへリダイレクト
       redirect_to root_path , notice: 'メッセージを編集しました'
@@ -36,6 +35,19 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+ 
+  def followings
+    @user = User.find(params[:id])
+    # @followings にフォローしているユーザーの一覧をセットする
+    @followings = @user.following_users
+  end
+  
+ 
+  def followers
+    @user  = User.find(params[:id])
+    @followers = @user.follower_users
+  end
+ 
  
   def set_message
     @user = User.find(params[:id])

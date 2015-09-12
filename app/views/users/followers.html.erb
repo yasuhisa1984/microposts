@@ -1,0 +1,22 @@
+   <h1>フォロワーーユーザー数<%= @followers.count %></h1>
+  <% @followers.each do |followers| %>
+
+      <div class="col-sm-6">
+         <ul>
+            <li>id:<%= followers.id %></li>
+            <li>name:<%= followers.name %></li>
+            <li>email:<%= followers.email %></li>
+            <li>profile:<%= followers.Profile %></li>
+         </ul>
+        
+        <div id="follow_form_<%= followers.id %>">
+           <% if current_user.following?(@user) %>
+             <%= render 'unfollow' %>
+           <% else %>
+             <%= render 'follow' %>
+           <% end %>
+        </div>
+      </div>
+ 
+   <% end %>
+   
