@@ -8,11 +8,15 @@ class UsersController < ApplicationController
   
     
   def show
-   @user = User.find(params[:id])
-   @microposts = @user.microposts
+    @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
   
+  def index
+    @users = User.all
+  end
   
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -38,6 +42,7 @@ class UsersController < ApplicationController
  
   def followings
     @user = User.find(params[:id])
+    
     # @followings にフォローしているユーザーの一覧をセットする
     @followings = @user.following_users
   end
@@ -56,7 +61,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation, :area, :Profile)
+                                  :password_confirmation, :area, :profile)
   end
 end
   

@@ -1,15 +1,13 @@
-   <h1>フォロワーーユーザー数<%= @followers.count %></h1>
+<h1>フォロワーーユーザー数<%= @followers.count %></h1>
   <% @followers.each do |followers| %>
-
       <div class="col-sm-6">
          <ul>
             <li>id:<%= followers.id %></li>
             <li>name:<%= followers.name %></li>
             <li>email:<%= followers.email %></li>
-            <li>profile:<%= followers.Profile %></li>
+            <li>profile:<%= followers.profile %></li>
+            <li>area:<%= followers.area %></li>
          </ul>
-             <%= render 'follow_form' %>
       </div>
- 
    <% end %>
    

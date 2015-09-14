@@ -17,11 +17,22 @@
     <% end %>
   </div>
 </div>
-
-<h1><%= gravatar_for @user %></h1>
+  <h2>プロフィール</h2>
     <ul>
-        <li><%= @user.name %></li>
-        <li><%= @user.Profile %></li>
-        <li><%= @user.area %></li>
+        <li>id =><%= @user.id %></li>
+        <li>name =><%= @user.name %></li>
+        <li>profile =><%= @user.profile %></li>
+        <li>area =><%= @user.area %></li>
+        <li>フォロー一覧 =><%= link_to "followings", followings_user_path %></li>
+        <li>フォロワー一覧 =><%= link_to "followers", followers_user_path %></li>
     </ul>
-    <%= link_to "Edit", edit_user_path(current_user) %>
+    
+    <% if current_user == @user %>
+ 
+      <%= link_to "Edit", edit_user_path(current_user) %>
+    <% end %>
+
+     
+ 
+  
+
