@@ -9,11 +9,11 @@ class UsersController < ApplicationController
     
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts
+    @microposts = @user.microposts.order(:id).page(params[:page])
   end
   
   def index
-    @users = User.all
+    @users = User.order(:id).page(params[:page])
   end
   
 

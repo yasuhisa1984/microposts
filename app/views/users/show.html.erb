@@ -6,31 +6,33 @@
         <%= @user.name %>
       </h1>
     </section>
+      <ul>
+          <li>id =><%= @user.id %></li>
+          <li>name =><%= @user.name %></li>
+          <li>profile =><%= @user.profile %></li>
+          <li>area =><%= @user.area %></li>
+          <li>フォロー一覧 =><%= link_to "followings", followings_user_path %></li>
+          <li>フォロワー一覧 =><%= link_to "followers", followers_user_path %></li>
+      </ul>
+    <% if current_user == @user %>
+      <%= link_to "Edit", edit_user_path(current_user) %>
+    <% end %>
   </aside>
+  
+  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
+        <%= paginate(@microposts) %>
       </ol>
     <% end %>
   </div>
 </div>
-  <h2>プロフィール</h2>
-    <ul>
-        <li>id =><%= @user.id %></li>
-        <li>name =><%= @user.name %></li>
-        <li>profile =><%= @user.profile %></li>
-        <li>area =><%= @user.area %></li>
-        <li>フォロー一覧 =><%= link_to "followings", followings_user_path %></li>
-        <li>フォロワー一覧 =><%= link_to "followers", followers_user_path %></li>
-    </ul>
-    
-    <% if current_user == @user %>
- 
-      <%= link_to "Edit", edit_user_path(current_user) %>
-    <% end %>
+
+  
 
      
  

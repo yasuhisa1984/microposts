@@ -1,5 +1,6 @@
 <h1>ユーザー　一覧</h1>
     <% @users.each do |all| %>
+    <div class="col-sm-6">
         <ul>
             <li>id: =><%= all.id %></li>
             <li>name: =><%= all.name %></li>
@@ -7,7 +8,9 @@
             <li>profile: =><%= all.profile %></li>
             <li>area: =><%= all.area %></li>
         </ul>
+    </div>
     <% end %>
+    <%= paginate(@users) %>
  
 
   
